@@ -29,41 +29,41 @@ The tables are connected in the following way:
 
   The following instructions were written in the scope of CREATING the structure of the database (CREATE INSTRUCTIONS)
 
-  create database my_company;
+  create database my_company;<br>
 
-  create table employees (
-    employeeId int not null auto_increment,
-    firstName varchar(25) not null,
-    lastName varchar(25) not null,
-    emailaddress varchar(30) not null,
-    dateOfBirth date not null,
-    age int not null,
-    address varchar(40), 
-    phoneNumber int not null, 
-    salary float(10) not null, 
-    primary key(employeeId)
+  create table employees ( <br>
+    employeeId int not null auto_increment,<br>
+    firstName varchar(25) not null,<br>
+    lastName varchar(25) not null,<br>
+    emailaddress varchar(30) not null,<br>
+    dateOfBirth date not null,<br>
+    age int not null,<br>
+    address varchar(40), <br>
+    phoneNumber int not null, <br>
+    salary float(10) not null, <br>
+    primary key(employeeId)<br>
   );<br>
-   create table project(
-    projectId int not null auto_increment,
-    projectName varchar(25) not null,
-    deadlineDate date,
-    primary key (projectId),
-    employeeId int,
-    foreign key (employeeId) references employees (employeeId)
+   create table project(<br>
+    projectId int not null auto_increment,<br>
+    projectName varchar(25) not null,<br>
+    deadlineDate date,<br>
+    primary key (projectId),<br>
+    employeeId int,<br>
+    foreign key (employeeId) references employees (employeeId)<br>
   );<br>
 
-  create table departments(
-    departmentId int not null auto_increment,
-    departmentName varchar(25),
-    primary key(departmentId),
-    employeeId int,
-    foreign key (employeeId) references employees (employeeId)
+  create table departments(<br>
+    departmentId int not null auto_increment,<br>
+    departmentName varchar(25),<br>
+    primary key(departmentId),<br>
+    employeeId int,<br>
+    foreign key (employeeId) references employees (employeeId)<br>
   );<br>
-  create table locations(
-    locationId int not null auto_increment,
-    city varchar(25),
-    country varchar(25),
-    postalCode int,<br>
+  create table locations(<br>
+    locationId int not null auto_increment,<br>
+    city varchar(25),<br>
+    country varchar(25),<br>
+    postalCode int,<br><br>
     primary key(locationId)<br>
   );<br>
   
@@ -170,7 +170,7 @@ CROP column deadlineDate;</li>
 DELETE FROM supervisers;  - this table was not used in the end that is why i did not put it in the beginning, hence it is not part of the database anymore</li>
 </ul><br>
 
-In order to simulate various scenarios that might happen in real life I created the following queries that would cover multiple potential real-life situations:
+In order to simulate various scenarios that might happen in real life I created the following queries that would cover multiple potential real-life situations:<br>
 
 where - searched for the people in the employees table whose first name is "Michael"<br>
 SELECT * FROM employees WHERE firstName = "Michael";
@@ -186,9 +186,9 @@ like - checking in the departments table if there are names that contain letter 
 SELECT * FROM departments WHERE departmentName LIKE "%e%";
 
 inner join - shows employeeid, firstname, lastName and departmentName the people who have associated a departments to their name<br>
-SELECT employees.employeeId, employees.firstName, employees.lastName, departments.departmentName
-FROM employees
-INNER JOIN departments ON employees.employeeId=departments.employeeId;
+SELECT employees.employeeId, employees.firstName, employees.lastName, departments.departmentName<br>
+FROM employees<br>
+INNER JOIN departments ON employees.employeeId=departments.employeeId;<br>
 
 left join<br>
 SELECT * FROM employees LEFT JOIN contact_person ON employees.lastName=contact_person.lastName;
@@ -202,27 +202,27 @@ FROM employees
 RIGHT JOIN projects USING (employeeId);
 
 agregate functions<br>
-avg - calculate average age of the employees in the employees table:
-SELECT avg(age) FROM employees;
-min - show the lowest salary in the employees table:
-SELECT min(salary) FROM employees;
+avg - calculate average age of the employees in the employees table:<br>
+SELECT avg(age) FROM employees;<br>
+min - show the lowest salary in the employees table:<br>
+SELECT min(salary) FROM employees;<br>
 
-order by - order the employees by their age in acending order:
+order by - order the employees by their age in acending order:<br>
 SELECT * FROM employees ORDER BY age ASC; 
 
 - group by - counting how many cities are from the same country<br>
 SELECT count(locationId) AS Number_of_cities_from_the_same_country FROM locations GROUP BY country;
 
 - having<br>
-SELECT COUNT(employeeId), Country
-FROM employees
-GROUP BY Country
+SELECT COUNT(employeeId), Country <br>
+FROM employees<br>
+GROUP BY Country<br>
 HAVING COUNT(employeeId) > 1;
 
-limit - show the first 3 data entry in the departments table:
+limit - show the first 3 data entry in the departments table:<br>
 SELECT * FROM departments LIMIT 3;
  
-limit - show the first 7 data entry in the employees table:
+limit - show the first 7 data entry in the employees table:<br>
 SELECT * FROM employees limit 7;
 
 </ol>
