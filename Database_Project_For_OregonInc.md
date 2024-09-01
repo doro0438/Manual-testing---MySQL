@@ -43,13 +43,14 @@ The tables are connected in the following way:
     salary float(10) not null, <br>
     primary key(employeeId)<br>
   );<br>
+  <br>
    create table project(<br>
-    projectId int not null auto_increment,<br>
-    projectName varchar(25) not null,<br>
-    deadlineDate date,<br>
-    primary key (projectId),<br>
-    employeeId int,<br>
-    foreign key (employeeId) references employees (employeeId)<br>
+      projectId int not null auto_increment,<br>
+      projectName varchar(25) not null,<br>
+      deadlineDate date,<br>
+      primary key (projectId),<br>
+      employeeId int,<br>
+      foreign key (employeeId) references employees (employeeId)<br>
   );<br>
 
   create table departments(<br>
@@ -229,6 +230,6 @@ SELECT * FROM employees limit 7;
 
 <li>Conclusions</li>
 
-In conclusion I got to see and dive deeper into how our company database is looking like and how a possible HR website would store our personal info just as in the employees table. Besides, I learned how to manage the child-parent issues and how I can edit the info in those tables, as I got multiple conflicts regarding that I cannot edit foreign keys and had to find other ways to edit them using other sytanxes I knew up until now. 
+In conclusion I got to see and dive deeper into how our company database could be looking like and how a possible HR website would store our personal info just as in the employees table. Besides, I learned how to manage the child-parent issues and how I can edit the info in those tables, as I got multiple conflicts regarding that I cannot edit foreign keys and had to find other ways to edit them using other sytanxes I knew up until now. 
 
 </ol>
