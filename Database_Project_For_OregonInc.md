@@ -63,8 +63,8 @@ The tables are connected in the following way:
     locationId int not null auto_increment,<br>
     city varchar(25),<br>
     country varchar(25),<br>
-    postalCode int,<br><br>
-    primary key(locationId)<br>
+    postalCode int,<br>
+    primary key(locationId)
   );<br>
   
 
