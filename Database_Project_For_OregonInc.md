@@ -42,7 +42,7 @@ The tables are connected in the following way:
     phoneNumber int not null, 
     salary float(10) not null, 
     primary key(employeeId)
-  );
+  );<br>
    create table project(
     projectId int not null auto_increment,
     projectName varchar(25) not null,
@@ -50,7 +50,7 @@ The tables are connected in the following way:
     primary key (projectId),
     employeeId int,
     foreign key (employeeId) references employees (employeeId)
-  );
+  );<br>
 
   create table departments(
     departmentId int not null auto_increment,
@@ -58,14 +58,14 @@ The tables are connected in the following way:
     primary key(departmentId),
     employeeId int,
     foreign key (employeeId) references employees (employeeId)
-  );
+  );<br>
   create table locations(
     locationId int not null auto_increment,
     city varchar(25),
     country varchar(25),
-    postalCode int,
-    primary key(locationId)
-  );
+    postalCode int,<br>
+    primary key(locationId)<br>
+  );<br>
   
 
 After the database and the tables have been created, a few ALTER instructions were written in order to update the structure of the database, as described below:
@@ -90,37 +90,37 @@ After the database and the tables have been created, a few ALTER instructions we
   Below you can find all the insert instructions that were created in the scope of this project:
 
   insert made for certain columns:
-  INSERT INTO locations (city, country, postalCode) values ("New York", "United States",	"10001"),
-  ("London",	"United Kingdom",	"12778"),
-  ("Sydney",	"Australia",	"2000"),
-  ("Tokyo",	"Japan",	"1000001"),
-  ("Toronto",	"Canada",	"12345");
+  INSERT INTO locations (city, country, postalCode) values ("New York", "United States",	"10001"),<br>
+  ("London",	"United Kingdom",	"12778"),<br>
+  ("Sydney",	"Australia",	"2000"),<br>
+  ("Tokyo",	"Japan",	"1000001"),<br>
+  ("Toronto",	"Canada",	"12345");<br>
 
-  insert into all the columns-one row only:
-  INSERT INTO employees values
-  ("8","Michael",	"Johnson",	"michael.j@yahoo.com",	"1988-09-23",	"36",	"789 San Francisco Road, Austin, TX",	"345678912",	"101000");
+  insert into all the columns-one row only:<br>
+  INSERT INTO employees values<br>
+  ("8","Michael",	"Johnson",	"michael.j@yahoo.com",	"1988-09-23",	"36",	"789 San Francisco Road, Austin, TX",	"345678912",	"101000");<br>
 
-  insert into all the columns-multiple rows:
-  INSERT INTO employees values
-  ("3", "Jane",	"Smith",	"jane.smith@outlook.com",	"1985-03-22",	"39",	"456 Oak Ave, City, ST",	"234568901",	"75.000"),
-  ("4","Michael",	"Johnson",	"michael.j@yahoo.com",	"1978-06-10",	"46",	"789 Pine Dr, City, ST",	"345678912",	"80.000"),
-  ("5",	"Emily",	"Davis",	"emily.davis@gmail.com",	"1993-11-05",	"30",	"321 Maple Ln, City, ST",	"457890123"	,"55.000"),
-  ("6",	"David",	"Wilson",	"david.w@example.com",	"1982-09-30",	"41",	"654 Birch Blvd, City, ST",	"567801234",	"70.000");
+  insert into all the columns-multiple rows:<br>
+  INSERT INTO employees values<br>
+  ("3", "Jane",	"Smith",	"jane.smith@outlook.com",	"1985-03-22",	"39",	"456 Oak Ave, City, ST",	"234568901",	"75.000"),<br>
+  ("4","Michael",	"Johnson",	"michael.j@yahoo.com",	"1978-06-10",	"46",	"789 Pine Dr, City, ST",	"345678912",	"80.000"),<br>
+  ("5",	"Emily",	"Davis",	"emily.davis@gmail.com",	"1993-11-05",	"30",	"321 Maple Ln, City, ST",	"457890123"	,"55.000"),<br>
+  ("6",	"David",	"Wilson",	"david.w@example.com",	"1982-09-30",	"41",	"654 Birch Blvd, City, ST",	"567801234",	"70.000");<br>
 
-  INSERT INTO projects (projectName, startDate, endDate) values
-  ("Project Alpha", "2024-01-01",	"2024-03-31"),
-  (	"Project Beta",	"2024-02-15",	"2024-04-30"),
-  (	"Project Gamma", "2024-03-01",	"2024-06-30"),
-  (	"Project Delta", "2024-04-10",	"2024-07-15"),
-  ("Project Epsilon", "2024-05-20",	"2024-08-30");
+  INSERT INTO projects (projectName, startDate, endDate) values<br>
+  ("Project Alpha", "2024-01-01",	"2024-03-31"),<br>
+  (	"Project Beta",	"2024-02-15",	"2024-04-30"),<br>
+  (	"Project Gamma", "2024-03-01",	"2024-06-30"),<br>
+  (	"Project Delta", "2024-04-10",	"2024-07-15"),<br>
+  ("Project Epsilon", "2024-05-20",	"2024-08-30");<br>
 
   INSERT INTO departments (departmentId, departmentName) values ("1",	"New York");
   
-  INSERT INTO departments (departmentId, departmentName) values 
-  ("2",	"HR"),
-  ("3",	"Sales"),
-  ("4",	"Marketing"),
-  ("5",	"IT");
+  INSERT INTO departments (departmentId, departmentName) values <br>
+  ("2",	"HR"),<br>
+  ("3",	"Sales"),<br>
+  ("4",	"Marketing"),<br>
+  ("5",	"IT");<br>
 
   After the insert, in order to prepare the data to be better suited for the testing process, I updated some data in the following way:
 
@@ -133,11 +133,11 @@ After the database and the tables have been created, a few ALTER instructions we
   SET departmentName = "Accounting" 
   WHERE departmentName = "New York";</li>
 
-   <li>added values to the foreign key:
-  UPDATE `my_company`.`departments` SET `locationId` = '3' WHERE (`departmentId` = '1');
-  UPDATE `my_company`.`departments` SET `locationId` = '1' WHERE (`departmentId` = '2');
-  UPDATE `my_company`.`departments` SET `locationId` = '2' WHERE (`departmentId` = '3');
-  UPDATE `my_company`.`departments` SET `locationId` = '4' WHERE (`departmentId` = '4');
+   <li>added values to the foreign key:<br>
+  UPDATE `my_company`.`departments` SET `locationId` = '3' WHERE (`departmentId` = '1');<br>
+  UPDATE `my_company`.`departments` SET `locationId` = '1' WHERE (`departmentId` = '2');<br>
+  UPDATE `my_company`.`departments` SET `locationId` = '2' WHERE (`departmentId` = '3');<br>
+  UPDATE `my_company`.`departments` SET `locationId` = '4' WHERE (`departmentId` = '4');<br>
   UPDATE `my_company`.`departments` SET `locationId` = '5' WHERE (`departmentId` = '5');</li>
 
    <li>tied the Customer Success department with an employee:
@@ -145,13 +145,13 @@ After the database and the tables have been created, a few ALTER instructions we
   SET employeeId="10"
   WHERE departmentId = "8";</li>
 
-   <li>after adding a new column in the employee table, populated those cells with new value:
-  UPDATE employees
-  SET country="United States"
-  WHERE employeeId = "2";
+   <li>after adding a new column in the employee table, populated those cells with new value:<br>
+  UPDATE employees<br>
+  SET country="United States"<br>
+  WHERE employeeId = "2";<br>
 
-  UPDATE employees
-  SET country="United States"
+  UPDATE employees<br>
+  SET country="United States"<br>
   WHERE employeeId = "4"; (there were multiple rows entered, but the syntax is the same, so will not show every row)</li>
 </ul><br>
 
