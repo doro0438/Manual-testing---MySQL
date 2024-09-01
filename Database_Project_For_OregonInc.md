@@ -1,12 +1,12 @@
-<h1>Database Project for **Oregon Inc.**</h1>
+<h1>Database Project for Oregon Inc.</h1>
 
 The scope of this project is to use all the SQL knowledge gained throught the Software Testing course and apply them in practice.
 
-Application under test: **Oregon Inc. company database**
+Application under test: Oregon Inc. company database
 
 Tools used: MySQL Workbench
 
-Database description: **The purpose of the database I created was to get an overview of a fictional company called Oregon Inc. The company provides Telecommunication services all over the world. They have different departments working in different locations. The database will store informations about the employees, such as name, address and other personal info, their contact person in case of emergency, the departments they work for and the project they are working on. Moreover these departments will be tied to different locations.**
+Database description: The purpose of the database I created was to get an overview of a fictional company called Oregon Inc. The company provides Telecommunication services all over the world. They have different departments working in different locations. The database will store informations about the employees, such as name, address and other personal info, their contact person in case of emergency, the departments they work for and the project they are working on. Moreover these departments will be tied to different locations.
 
 <ol>
 <li>Database Schema </li>
@@ -16,10 +16,10 @@ You can find below the database schema that was generated through Reverse Engine
 The tables are connected in the following way:
 
 <ul>
-  <li> **contact_person**  is connected with **employees** through a **1:n** relationship which was implemented through **contactPersonId** as a primary key and **employees.locationId** as a foreign key</li>
-  <li> **department**  is connected with **employees** through a **1:1** relationship which was implemented through **departments.departmentId** as a primary key and **employees.departmentId** as a foreign key</li>
-  <li> **departments**  is connected with **locationss** through a **n:1** relationship which was implemented through **departments.departmentId** as a primary key and **locations.locationId** as a foreign key</li>
-  <li> **projects**  is connected with **employees** through a **n:1** relationship which was implemented through **projects.projetcId** as a primary key and **employees.employeeId** as a foreign key</li>
+  <li> contact_person  is connected with employees through a 1:n relationship which was implemented through contactPersonId as a primary key and employees.locationId as a foreign key</li>
+  <li> department  is connected with employees through a 1:1 relationship which was implemented through departments.departmentId as a primary key and employees.departmentId as a foreign key</li>
+  <li> departments  is connected with locationss through a n:1 relationship which was implemented through departments.departmentId as a primary key and locations.locationId as a foreign key</li>
+  <li> projects  is connected with employees through a n:1 relationship which was implemented through projects.projetcId as a primary key and employees.employeeId as a foreign key</li>
 </ul><br>
 
 <li>Database Queries</li><br>
@@ -68,29 +68,24 @@ The tables are connected in the following way:
   );
   
 
-  After the database and the tables have been created, a few ALTER instructions were written in order to update the structure of the database, as described below:
+After the database and the tables have been created, a few ALTER instructions were written in order to update the structure of the database, as described below:
 
 
-**changing table name:**
-alter table project rename projects;
-**define a new column:**
-alter table departments add locationId int;
-**add a column as a foreign key:**
-alter table departments add foreign key (locationId) references locations (locationId);
-**change column property:**
-alter table employees modify emailaddress varchar(40);
+changing table name: alter table project rename projects;
 
-**delete a table column:**
-alter table projects drop column deadlineDate;
+define a new column: alter table departments add locationId int;
 
-**adding a new table column:**
-alter table projects add startDate date;
+add a column as a foreign key: alter table departments add foreign key (locationId) references locations (locationId);
 
-**delete a foreign key:**
-ALTER TABLE departments DROP FOREIGN KEY departments_ibfk_1;
+change column property: alter table employees modify emailaddress varchar(40);
 
-**add autoincrement to an id:**
-ALTER TABLE supervisers modify supervisorId INT NOT NULL AUTO_INCREMENT;
+delete a table column: alter table projects drop column deadlineDate;
+
+adding a new table column: alter table projects add startDate date;
+
+delete a foreign key: ALTER TABLE departments DROP FOREIGN KEY departments_ibfk_1;
+
+add autoincrement to an id: ALTER TABLE supervisers modify supervisorId INT NOT NULL AUTO_INCREMENT;
 
   <li>DML (Data Manipulation Language)</li>
 
@@ -99,18 +94,18 @@ ALTER TABLE supervisers modify supervisorId INT NOT NULL AUTO_INCREMENT;
 
   Below you can find all the insert instructions that were created in the scope of this project:
 
-  **insert made for certain columns:**
+  insert made for certain columns:
   INSERT INTO locations (city, country, postalCode) values ("New York", "United States",	"10001"),
   ("London",	"United Kingdom",	"12778"),
   ("Sydney",	"Australia",	"2000"),
   ("Tokyo",	"Japan",	"1000001"),
   ("Toronto",	"Canada",	"12345");
 
-  **insert into all the columns-one row only:**
+  insert into all the columns-one row only:
   INSERT INTO employees values
   ("8","Michael",	"Johnson",	"michael.j@yahoo.com",	"1988-09-23",	"36",	"789 San Francisco Road, Austin, TX",	"345678912",	"101000");
 
-  **insert into all the columns-multiple rows:**
+  insert into all the columns-multiple rows:
   INSERT INTO employees values
   ("3", "Jane",	"Smith",	"jane.smith@outlook.com",	"1985-03-22",	"39",	"456 Oak Ave, City, ST",	"234568901",	"75.000"),
   ("4","Michael",	"Johnson",	"michael.j@yahoo.com",	"1978-06-10",	"46",	"789 Pine Dr, City, ST",	"345678912",	"80.000"),
@@ -125,6 +120,7 @@ ALTER TABLE supervisers modify supervisorId INT NOT NULL AUTO_INCREMENT;
   ("Project Epsilon", "2024-05-20",	"2024-08-30");
 
   INSERT INTO departments (departmentId, departmentName) values ("1",	"New York");
+  
   INSERT INTO departments (departmentId, departmentName) values 
   ("2",	"HR"),
   ("3",	"Sales"),
@@ -133,27 +129,27 @@ ALTER TABLE supervisers modify supervisorId INT NOT NULL AUTO_INCREMENT;
 
   After the insert, in order to prepare the data to be better suited for the testing process, I updated some data in the following way:
 
-  **update a certain cell:**
+  update a certain cell:
   UPDATE employees SET salary = "60000" WHERE employeeId="2";
 
-  **update a cell since I entered the wrong information to it:**
+  update a cell since I entered the wrong information to it:
   UPDATE departments 
   SET departmentName = "Accounting" 
   WHERE departmentName = "New York";
 
-  **added values to the foreign key:**
+  added values to the foreign key:
   UPDATE `my_company`.`departments` SET `locationId` = '3' WHERE (`departmentId` = '1');
   UPDATE `my_company`.`departments` SET `locationId` = '1' WHERE (`departmentId` = '2');
   UPDATE `my_company`.`departments` SET `locationId` = '2' WHERE (`departmentId` = '3');
   UPDATE `my_company`.`departments` SET `locationId` = '4' WHERE (`departmentId` = '4');
   UPDATE `my_company`.`departments` SET `locationId` = '5' WHERE (`departmentId` = '5');
 
-  **tied the Customer Success department with an employee:**
+  tied the Customer Success department with an employee:
   UPDATE departments 
   SET employeeId="10"
   WHERE departmentId = "8";
 
-  **after adding a new column in the employee table, populated those cells with new value:**
+  after adding a new column in the employee table, populated those cells with new value:
   UPDATE employees
   SET country="United States"
   WHERE employeeId = "2";
@@ -169,66 +165,66 @@ After the testing process, I deleted the data that was no longer relevant in ord
 
 ALTER TABLE departments DROP FOREIGN KEY departments_ibfk_1;
 
-**delete unnecessary columns:**
+delete unnecessary columns:
 ALTER TABLE projects
 CROP column deadlineDate;
 
-**delete the info in the supervisers table:**
+delete the info in the supervisers table:
 DELETE FROM supervisers;  - this table was not used in the end that is why i did not put it in the beginning, hence it is not part of the database anymore
 
 In order to simulate various scenarios that might happen in real life I created the following queries that would cover multiple potential real-life situations:
 
-**where - searched for the people in the employees table whose first name is "Michael"**<br>
+where - searched for the people in the employees table whose first name is "Michael"<br>
 SELECT * FROM employees WHERE firstName = "Michael";
 
-**AND - select postalcode from the locations table where the country are United States and the city is New York**<br>
+AND - select postalcode from the locations table where the country are United States and the city is New York<br>
 SELECT postalCode FROM locations WHERE country = "United States" and city = "New York";
 
-**OR - select employeeId, locationId for the rows where the departmane name is either HR or Marketing**<br>
+OR - select employeeId, locationId for the rows where the departmane name is either HR or Marketing<br>
 SELECT employeeId, locationId FROM departments WHERE departmentName = "HR" OR departmentName ="Marketing";
-**NOT**<br>
+NOT<br>
 
-**like - checking in the departments table if there are names that contain letter "e"**<br>
+like - checking in the departments table if there are names that contain letter "e"<br>
 SELECT * FROM departments WHERE departmentName LIKE "%e%";
 
-**inner join - shows employeeid, firstname, lastName and departmentName the people who have associated a departments to their name**<br>
+inner join - shows employeeid, firstname, lastName and departmentName the people who have associated a departments to their name<br>
 SELECT employees.employeeId, employees.firstName, employees.lastName, departments.departmentName
 FROM employees
 INNER JOIN departments ON employees.employeeId=departments.employeeId;
 
-**left join**<br>
+left join<br>
 SELECT * FROM employees LEFT JOIN contact_person ON employees.lastName=contact_person.lastName;
 
-**cross join - the locations tables row will be matched with the rows from the departmnets table:**<br>
+cross join - the locations tables row will be matched with the rows from the departmnets table:<br>
 SELECT * FROM locations CROSS JOIN departments;
 
-**right join - show which employee is working on which project**<br>
+right join - show which employee is working on which project<br>
 SELECT employeeId, firstName, projectName
 FROM employees
 RIGHT JOIN projects USING (employeeId);
 
-**agregate functions**<br>
-**avg - calculate average age of the employees in the employees table:**
+agregate functions<br>
+avg - calculate average age of the employees in the employees table:
 SELECT avg(age) FROM employees;
-**min - show the lowest salary in the employees table:**
+min - show the lowest salary in the employees table:
 SELECT min(salary) FROM employees;
 
-**order by - order the employees by their age in acending order:**
+order by - order the employees by their age in acending order:
 SELECT * FROM employees ORDER BY age ASC; 
 
-**- group by - counting how many cities are from the same country**<br>
+- group by - counting how many cities are from the same country<br>
 SELECT count(locationId) AS Number_of_cities_from_the_same_country FROM locations GROUP BY country;
 
-**- having**<br>
+- having<br>
 SELECT COUNT(employeeId), Country
 FROM employees
 GROUP BY Country
 HAVING COUNT(employeeId) > 1;
 
-**limit - show the first 3 data entry in the departments table:**
+limit - show the first 3 data entry in the departments table:
 SELECT * FROM departments LIMIT 3;
  
-**limit - show the first 7 data entry in the employees table:**
+limit - show the first 7 data entry in the employees table:
 SELECT * FROM employees limit 7;
 
 </ol>
