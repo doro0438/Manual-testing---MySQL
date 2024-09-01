@@ -71,21 +71,16 @@ The tables are connected in the following way:
 After the database and the tables have been created, a few ALTER instructions were written in order to update the structure of the database, as described below:
 
 
-changing table name: alter table project rename projects;
-
-define a new column: alter table departments add locationId int;
-
-add a column as a foreign key: alter table departments add foreign key (locationId) references locations (locationId);
-
-change column property: alter table employees modify emailaddress varchar(40);
-
-delete a table column: alter table projects drop column deadlineDate;
-
-adding a new table column: alter table projects add startDate date;
-
-delete a foreign key: ALTER TABLE departments DROP FOREIGN KEY departments_ibfk_1;
-
-add autoincrement to an id: ALTER TABLE supervisers modify supervisorId INT NOT NULL AUTO_INCREMENT;
+<ul>
+  <li>changing table name: alter table project rename projects;</li>
+<li>define a new column: alter table departments add locationId int;</li>
+<li>add a column as a foreign key: alter table departments add foreign key (locationId) references locations (locationId);</li>
+<li>change column property: alter table employees modify emailaddress varchar(40);</li>
+<li>delete a table column: alter table projects drop column deadlineDate;</li>
+<li>adding a new table column: alter table projects add startDate date;</li>
+<li>delete a foreign key: ALTER TABLE departments DROP FOREIGN KEY departments_ibfk_1;</li>
+<li>add autoincrement to an id: ALTER TABLE supervisers modify supervisorId INT NOT NULL AUTO_INCREMENT;</li>
+</ul><br>
 
   <li>DML (Data Manipulation Language)</li>
 
@@ -129,48 +124,51 @@ add autoincrement to an id: ALTER TABLE supervisers modify supervisorId INT NOT 
 
   After the insert, in order to prepare the data to be better suited for the testing process, I updated some data in the following way:
 
-  update a certain cell:
-  UPDATE employees SET salary = "60000" WHERE employeeId="2";
+  <ul>
+  <li>update a certain cell:
+  UPDATE employees SET salary = "60000" WHERE employeeId="2";</li>
 
-  update a cell since I entered the wrong information to it:
+   <li>update a cell since I entered the wrong information to it:
   UPDATE departments 
   SET departmentName = "Accounting" 
-  WHERE departmentName = "New York";
+  WHERE departmentName = "New York";</li>
 
-  added values to the foreign key:
+   <li>added values to the foreign key:
   UPDATE `my_company`.`departments` SET `locationId` = '3' WHERE (`departmentId` = '1');
   UPDATE `my_company`.`departments` SET `locationId` = '1' WHERE (`departmentId` = '2');
   UPDATE `my_company`.`departments` SET `locationId` = '2' WHERE (`departmentId` = '3');
   UPDATE `my_company`.`departments` SET `locationId` = '4' WHERE (`departmentId` = '4');
-  UPDATE `my_company`.`departments` SET `locationId` = '5' WHERE (`departmentId` = '5');
+  UPDATE `my_company`.`departments` SET `locationId` = '5' WHERE (`departmentId` = '5');</li>
 
-  tied the Customer Success department with an employee:
+   <li>tied the Customer Success department with an employee:
   UPDATE departments 
   SET employeeId="10"
-  WHERE departmentId = "8";
+  WHERE departmentId = "8";</li>
 
-  after adding a new column in the employee table, populated those cells with new value:
+   <li>after adding a new column in the employee table, populated those cells with new value:
   UPDATE employees
   SET country="United States"
   WHERE employeeId = "2";
 
   UPDATE employees
   SET country="United States"
-  WHERE employeeId = "4"; (there were multiple rows entered, but the syntax is the same, so will not show every row)
+  WHERE employeeId = "4"; (there were multiple rows entered, but the syntax is the same, so will not show every row)</li>
+</ul><br>
 
 
   <li>DQL (Data Query Language)</li>
 
 After the testing process, I deleted the data that was no longer relevant in order to preserve the database clean: 
+  <ul>
+ <li>ALTER TABLE departments DROP FOREIGN KEY departments_ibfk_1;</li>
 
-ALTER TABLE departments DROP FOREIGN KEY departments_ibfk_1;
-
-delete unnecessary columns:
+ <li>delete unnecessary columns:
 ALTER TABLE projects
-CROP column deadlineDate;
+CROP column deadlineDate;</li>
 
-delete the info in the supervisers table:
-DELETE FROM supervisers;  - this table was not used in the end that is why i did not put it in the beginning, hence it is not part of the database anymore
+ <li>delete the info in the supervisers table:
+DELETE FROM supervisers;  - this table was not used in the end that is why i did not put it in the beginning, hence it is not part of the database anymore</li>
+</ul><br>
 
 In order to simulate various scenarios that might happen in real life I created the following queries that would cover multiple potential real-life situations:
 
