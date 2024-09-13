@@ -40,7 +40,7 @@ You can find below the database schema that was generated through Reverse Engine
 
 1. DDL (Data Definition Language)
 
-The following instructions were written in the scope of CREATING the structure of the database. Here the CREATE instructions will be listed.
+The following instructions were written in the scope of creating the structure of the database. Here the CREATE instructions will be listed.
  
 First the database was created using the following query:
 
