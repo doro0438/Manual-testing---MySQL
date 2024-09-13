@@ -4,35 +4,47 @@
 
 <p>Application under test: Oregon Inc. company database</p>
 
-<p>Tools used: MySQL Workbench. To see the whole codesheet please click on the following link.</p>
+<p>Tool used: MySQL Workbench. To see the whole codesheet please click on the following link.</p>
 
 <p>Database description: The purpose of the database I created was to get an overview of a fictional company called Oregon Inc. The company provides Telecommunication services all over the world. They have different departments working in different locations. The database will store informations about the employees, such as name, address and other personal info, their contact person in case of emergency, the departments they work for and the project they are working on. Moreover these departments will be tied to different locations.</p>
 
 <ol>
-<li>Database Schema </li>
+<li>Database Schema</li>
+  
 <br>
+  
 <p>You can find below the database schema that was generated through Reverse Engineer and which contains all the tables and the relationships between them.</p>
 <img width="615" alt="reverse engineer" src="https://github.com/user-attachments/assets/4550f022-c5f6-4718-9c7b-66f54086d823">
-
-<p>The tables are connected in the following way:</p>
-
-<ul>
-  <li> contact_person  is connected with employees through a 1:n relationship which was implemented through contactPersonId as a primary key and employees.locationId as a foreign key</li>
-  <li> department  is connected with employees through a 1:1 relationship which was implemented through departments.departmentId as a primary key and employees.departmentId as a foreign key</li>
-  <li> departments  is connected with locationss through a n:1 relationship which was implemented through departments.departmentId as a primary key and locations.locationId as a foreign key</li>
-  <li> projects  is connected with employees through a n:1 relationship which was implemented through projects.projetcId as a primary key and employees.employeeId as a foreign key</li>
+  
+<ol>
+  <li>Tables</li>
+    <p>Employee table:</p>
+    <p>Contact person table:</p>
+    <p>Departments table:</p>
+    <p>Locations table:</p>
+    <p>Projects table:</p>
+    <p>Primary key:</p>
+    <p>Foreign key:</p>
+  <li>Table Relationships</li>
+    <ul>
+      <li> contact_person  is connected with employees through a 1:n relationship which was implemented through contactPersonId as a primary key and employees.locationId as a foreign key</li>
+      <li> department  is connected with employees through a 1:1 relationship which was implemented through departments.departmentId as a primary key and employees.departmentId as a foreign key</li>
+      <li> departments  is connected with locationss through a n:1 relationship which was implemented through departments.departmentId as a primary key and locations.locationId as a foreign key</li>
+      <li> projects  is connected with employees through a n:1 relationship which was implemented through projects.projetcId as a primary key and employees.employeeId as a foreign key</li>
 </ul><br>
+</ol>
 
 <li>Database Queries</li><br>
 
 <ol type="a">
   <li>DDL (Data Definition Language)</li>
 
- <p>The following instructions were written in the scope of CREATING the structure of the database (CREATE INSTRUCTIONS)</p>
-
+ <p>The following instructions were written in the scope of CREATING the structure of the database. Here the CREATE instructions will be listed.</p>
+<p>First the databes was created using the following query:</p>
 <code>create database my_company;<br></code>
 
-<code>create table employees ( <br>
+<p>Next step will be to create the tables for the database, namely: employees, project, departments, locations:</p>
+<code>create table employees( <br>
 employeeId int not null auto_increment,<br>
 firstName varchar(25) not null,<br>
 lastName varchar(25) not null,<br>
@@ -74,16 +86,15 @@ primary key(locationId)<br>
 
 <p>After the database and the tables have been created, a few ALTER instructions were written in order to update the structure of the database, as described below:</p>
 
-
 <ul>
-  <li>changing table name: <code>alter table project rename projects;</code></li>
-<li>define a new column: <code>alter table departments add locationId int;</code></li>
-<li>add a column as a foreign key: <code>alter table departments add foreign key (locationId) references locations (locationId);</code></li>
-<li>change column property: <code>alter table employees modify emailaddress varchar(40);</code></li>
-<li>delete a table column: <code>alter table projects drop column deadlineDate;</code></li>
-<li>adding a new table column: <code>alter table projects add startDate date;</code></li>
+  <li>changing table name: <code>ALTER TABLE project RENAME projects;</code></li>
+<li>define a new column: <code>ALTER TABLE departments ADD locationId int;</code></li>
+<li>add a column as a foreign key: <code>ALTER TABLE departments ADD foreign key (locationId) references locations (locationId);</code></li>
+<li>change column property: <code>ALTER TABLE employees modify emailaddress varchar(40);</code></li>
+<li>delete a table column: <code>ALTER TABLE projects DROP COLUMN deadlineDate;</code></li>
+<li>adding a new table column: <code>ALTER TABLE projects ADD startDate date;</code></li>
 <li>delete a foreign key: <code>ALTER TABLE departments DROP FOREIGN KEY departments_ibfk_1;</code></li>
-<li>add autoincrement to an id: <code>ALTER TABLE supervisers modify supervisorId INT NOT NULL AUTO_INCREMENT;</code></li>
+<li>add autoincrement to an id: <code>ALTER TABLE supervisers MODIFY supervisorId INT NOT NULL AUTO_INCREMENT;</code></li>
 </ul><br>
 
   <li>DML (Data Manipulation Language)</li>
@@ -92,17 +103,19 @@ primary key(locationId)<br>
 <p>In the testing process, this necessary data is identified in the Test Design phase and created in the Test Implementation phase.</p>
 
 <p>Below you can find all the insert instructions that were created in the scope of this project:</p>
-insert made for certain columns:<br>
+
+<p>insert made for certain columns:</p>
 <code>INSERT INTO locations (city, country, postalCode) values ("New York", "United States",	"10001"),<br>
   ("London",	"United Kingdom",	"12778"),<br>
   ("Sydney",	"Australia",	"2000"),<br>
   ("Tokyo",	"Japan",	"1000001"),<br>
   ("Toronto",	"Canada",	"12345");</code><br>
   <br>
-
-insert into all the columns-one row only:<br>
+<p>insert into all the columns-one row only:</p>
 <code>INSERT INTO employees values<br>
 ("8","Michael",	"Johnson",	"michael.j@yahoo.com",	"1988-09-23",	"36",	"789 San Francisco Road, Austin, TX",	"345678912",	"101000");</code><br>
+
+<code>INSERT INTO departments (departmentId, departmentName) values ("1",	"New York");</code><br>
 
 insert into all the columns-multiple rows:<br>
 <code>INSERT INTO employees values<br>
@@ -118,8 +131,6 @@ insert into all the columns-multiple rows:<br>
   (	"Project Delta", "2024-04-10",	"2024-07-15"),<br>
   ("Project Epsilon", "2024-05-20",	"2024-08-30");</code>
   <br>
-
-  <code>INSERT INTO departments (departmentId, departmentName) values ("1",	"New York");</code>
   
   <code>INSERT INTO departments (departmentId, departmentName) values <br>
   ("2",	"HR"),<br>
@@ -130,16 +141,16 @@ insert into all the columns-multiple rows:<br>
   <p>After the insert, in order to prepare the data to be better suited for the testing process, I updated some data in the following way:</p>
 
   <ul>
-  <li>update a certain cell:<br>
+  <li><p>update a certain cell:</p>
   <code>UPDATE employees SET salary = "60000" WHERE employeeId="2";</code></li>
 
-  <li>update a cell since I entered the wrong information to it:<br>
+  <li><p>update a cell since I entered the wrong information to it:</p>
   <code>UPDATE departments 
   SET departmentName = "Accounting" 
   WHERE departmentName = "New York";</code></li>
 
   <li>added values to the foreign key:<br>
-  <code>UPDATE `my_company`.`departments` SET `locationId` = '3' WHERE (`departmentId` = '1');</code>><br>
+  <code>UPDATE `my_company`.`departments` SET `locationId` = '3' WHERE (`departmentId` = '1');</code><br>
   <code>UPDATE `my_company`.`departments` SET `locationId` = '1' WHERE (`departmentId` = '2');</code><br>
   <code>UPDATE `my_company`.`departments` SET `locationId` = '2' WHERE (`departmentId` = '3');</code><br>
   <code>UPDATE `my_company`.`departments` SET `locationId` = '4' WHERE (`departmentId` = '4');</code><br>
@@ -160,78 +171,80 @@ SET country="United States"<br>
 WHERE employeeId = "4";</code>(there were multiple rows entered, but the syntax is the same, so will not show every row)</li>
 </ul><br>
 
-
   <li>DQL (Data Query Language)</li>
 
 <p>After the testing process, I deleted the data that was no longer relevant in order to preserve the database clean:</p>
   <ul>
- <li><code>ALTER TABLE departments DROP FOREIGN KEY departments_ibfk_1;</code></li>
+ <li><p>I did this step before adding the foreign key manually, because the first time connecting the two tables did not work. Thereofre, I deleted the foreign key relatinship which was set when creating the tables and after that did a connection manually, with the <code>UPDATE `my_company`.`departments` SET `locationId` = '5' WHERE (`departmentId` = '5');</code> explained earlier.</p>
+  <code>ALTER TABLE departments DROP FOREIGN KEY departments_ibfk_1;</code></li>
 
- <li>delete unnecessary columns:
+ <li><p>delete unnecessary columns:</p>
 <code>ALTER TABLE projects CROP column deadlineDate;</code></li>
 
- <li>delete the info in the supervisers table:
+ <li><p>delete the info in the supervisers table: </p>
 <code>DELETE FROM supervisers;</code>  - this table was not used in the end that is why i did not put it in the beginning, hence it is not part of the database anymore</li>
+<li><p>deleted some entries as I inserted the data twice:</p>
+<code>delete from employees where employeeId="11";</code></li>
 </ul><br>
 
 <p>In order to simulate various scenarios that might happen in real life I created the following queries that would cover multiple potential real-life situations:</p><br>
 
-where - searched for the people in the employees table whose first name is "Michael"<br>
+<p>WHERE - searched for the people in the employees table whose first name is "Michael"</p><br>
 <code>SELECT * FROM employees WHERE firstName = "Michael";</code>
 
-AND - select postalcode from the locations table where the country are United States and the city is New York<br>
+<p>AND - select postalcode from the locations table where the country are United States and the city is New York</p><br>
 <code>SELECT postalCode FROM locations WHERE country = "United States" and city = "New York";</code>
 
-OR - select employeeId, locationId for the rows where the departmane name is either HR or Marketing<br>
+<p>OR - select employeeId, locationId for the rows where the departmane name is either HR or Marketing</p><br>
 <code>SELECT employeeId, locationId FROM departments WHERE departmentName = "HR" OR departmentName ="Marketing";</code>
 <br>
 
-like - checking in the departments table if there are names that contain letter "e"<br>
+<p>like - checking in the departments table if there are names that contain letter "e"</p><br>
 <code>SELECT * FROM departments WHERE departmentName LIKE "%e%";</code>
 
-inner join - shows employeeid, firstname, lastName and departmentName the people who have associated a departments to their name<br>
+<p>inner join - shows employeeid, firstname, lastName and departmentName the people who have associated a departments to their name</p><br>
 <code>SELECT employees.employeeId, employees.firstName, employees.lastName, departments.departmentName<br>
 FROM employees<br>
 INNER JOIN departments ON employees.employeeId=departments.employeeId;</code><br>
 
-left join<br>
+<p>LEFT JOIN -  shows the people from contact person table who have the same lastname as the people from the employee table</p><br>
 <code>SELECT * FROM employees LEFT JOIN contact_person ON employees.lastName=contact_person.lastName;
 
-cross join - the locations tables row will be matched with the rows from the departmnets table:<br>
+<p>CROSS JOIN - the locations tables row will be matched with the rows from the departmets table</p><br>
 <code>SELECT * FROM locations CROSS JOIN departments;</code>
 
-right join - show which employee is working on which project<br>
+<p>RIGHT JOIN - show which employee is working on which project</p><br>
 <code>SELECT employeeId, firstName, projectName
 FROM employees
 RIGHT JOIN projects USING (employeeId);</code>
 
-agregate functions<br>
-avg - calculate average age of the employees in the employees table:<br>
+<p>agregate functions:</p><br>
+<p>AVG - calculate average age of the employees in the employees table:</p><br>
 <code>SELECT avg(age) FROM employees;</code><br>
 
-min - show the lowest salary in the employees table:<br>
+<p>min - show the lowest salary in the employees table:</p><br>
 <code>SELECT min(salary) FROM employees;</code><br>
 
-order by - order the employees by their age in acending order:<br>
+<p>ORDER BY - order the employees by their age in acending order:</p><br>
 <code>SELECT * FROM employees ORDER BY age ASC;</code>
 
-group by - counting how many cities are from the same country<br>
+<p>GROUP BY - counting how many cities are from the same country</p><br>
 <code>SELECT count(locationId) AS Number_of_cities_from_the_same_country FROM locations GROUP BY country;</code> 
 
-having<br>
+<p>HAVING - select the employeeId and country columns form employees table, group by country, exept the countries with only one employee</p><br>
 <code>SELECT COUNT(employeeId), Country <br>
 FROM employees<br>
 GROUP BY Country<br>
 HAVING COUNT(employeeId) > 1;</code> 
 
-limit - show the first 3 data entry in the departments table:<br>
+<p>LIMIT - show the first 3 data entry in the departments table:</p><br>
 <code>SELECT * FROM departments LIMIT 3;</code> 
  
-limit - show the first 7 data entry in the employees table:<br>
+<p>LIMIT - show the first 7 data entry in the employees table:</p><br>
 <code>SELECT * FROM employees limit 7;</code> </ol>
 
 <li>Conclusions</li>
 
-In conclusion I got to see and dive deeper into how our company database could be looking like and how a possible HR website would store our personal info just as in the employees table. Besides, I learned how to manage the child-parent issues and how I can edit the info in those tables, as I got multiple conflicts regarding that I cannot edit foreign keys and had to find other ways to edit them using other sytanxes I knew up until now. 
+<p>In conclusion I got to see and dive deeper into how our company database could be looking like and how a possible HR website would store our personal info just as in the employees table. Besides, I learned how to manage the child-parent issues and how I can edit the info in those tables, as I got multiple conflicts regarding that I cannot edit foreign keys and had to find other ways to edit them using other sytanxes I knew up until now.</p>
 
 </ol>
