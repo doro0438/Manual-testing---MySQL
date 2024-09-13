@@ -40,10 +40,13 @@
   <li>DDL (Data Definition Language)</li>
 
  <p>The following instructions were written in the scope of CREATING the structure of the database. Here the CREATE instructions will be listed.</p>
-<p>First the databes was created using the following query:</p>
-<code>create database my_company;<br></code>
+ 
+<p>First the database was created using the following query:</p>
+
+<code>create database my_company;</code><br>
 
 <p>Next step will be to create the tables for the database, namely: employees, project, departments, locations:</p>
+
 <code>create table employees( <br>
 employeeId int not null auto_increment,<br>
 firstName varchar(25) not null,<br>
@@ -65,7 +68,8 @@ deadlineDate date,<br>
 primary key (projectId),<br>
 employeeId int,<br>
 foreign key (employeeId) references employees (employeeId)<br>
-);</code><br>
+);</code>
+<br>
 
 <code>create table departments(<br>
 departmentId int not null auto_increment,<br>
@@ -73,7 +77,8 @@ departmentName varchar(25),<br>
 primary key(departmentId),<br>
 employeeId int,<br>
 foreign key (employeeId) references employees (employeeId)<br>
-);</code><br>
+);</code>
+<br>
 
 <code>create table locations(<br>
 locationId int not null auto_increment,<br>
@@ -81,7 +86,8 @@ city varchar(25),<br>
 country varchar(25),<br>
 postalCode int,<br>
 primary key(locationId)<br>
-);</code><br>
+);</code>
+<br>
   
 
 <p>After the database and the tables have been created, a few ALTER instructions were written in order to update the structure of the database, as described below:</p>
@@ -105,38 +111,38 @@ primary key(locationId)<br>
 <p>Below you can find all the insert instructions that were created in the scope of this project:</p>
 
 <p>insert made for certain columns:</p>
-<code>INSERT INTO locations (city, country, postalCode) values ("New York", "United States",	"10001"),<br>
-  ("London",	"United Kingdom",	"12778"),<br>
-  ("Sydney",	"Australia",	"2000"),<br>
-  ("Tokyo",	"Japan",	"1000001"),<br>
-  ("Toronto",	"Canada",	"12345");</code><br>
+<code>INSERT INTO locations (city, country, postalCode) values ("New York","United States","10001"),<br>
+  ("London","United Kingdom","12778"),<br>
+  ("Sydney","Australia","2000"),<br>
+  ("Tokyo","Japan","1000001"),<br>
+  ("Toronto","Canada","12345");</code><br>
   <br>
 <p>insert into all the columns-one row only:</p>
 <code>INSERT INTO employees values<br>
-("8","Michael",	"Johnson",	"michael.j@yahoo.com",	"1988-09-23",	"36",	"789 San Francisco Road, Austin, TX",	"345678912",	"101000");</code><br>
+("8","Michael","Johnson","michael.j@yahoo.com","1988-09-23","36","789 San Francisco Road, Austin, TX","345678912","101000");</code><br>
 
-<code>INSERT INTO departments (departmentId, departmentName) values ("1",	"New York");</code><br>
+<code>INSERT INTO departments (departmentId, departmentName) values ("1","New York");</code><br>
 
 insert into all the columns-multiple rows:<br>
 <code>INSERT INTO employees values<br>
-  ("3", "Jane",	"Smith",	"jane.smith@outlook.com",	"1985-03-22",	"39",	"456 Oak Ave, City, ST",	"234568901",	"75.000"),<br>
-  ("4","Michael",	"Johnson",	"michael.j@yahoo.com",	"1978-06-10",	"46",	"789 Pine Dr, City, ST",	"345678912",	"80.000"),<br>
-  ("5",	"Emily",	"Davis",	"emily.davis@gmail.com",	"1993-11-05",	"30",	"321 Maple Ln, City, ST",	"457890123"	,"55.000"),<br>
-  ("6",	"David",	"Wilson",	"david.w@example.com",	"1982-09-30",	"41",	"654 Birch Blvd, City, ST",	"567801234",	"70.000");</code><br>
+  ("3","Jane","Smith","jane.smith@outlook.com","1985-03-22","39","456 Oak Ave, City, ST","234568901",	"75.000"),<br>
+  ("4","Michael","Johnson","michael.j@yahoo.com","1978-06-10","46","789 Pine Dr, City, ST","345678912","80.000"),<br>
+  ("5","Emily","Davis","emily.davis@gmail.com","1993-11-05","30","321 Maple Ln, City, ST","457890123"	,"55.000"),<br>
+  ("6","David","Wilson","david.w@example.com","1982-09-30","41","654 Birch Blvd, City, ST","567801234","70.000");</code><br>
 
 <code>INSERT INTO projects (projectName, startDate, endDate) values<br>
-  ("Project Alpha", "2024-01-01",	"2024-03-31"),<br>
-  (	"Project Beta",	"2024-02-15",	"2024-04-30"),<br>
-  (	"Project Gamma", "2024-03-01",	"2024-06-30"),<br>
-  (	"Project Delta", "2024-04-10",	"2024-07-15"),<br>
-  ("Project Epsilon", "2024-05-20",	"2024-08-30");</code>
+  ("Project Alpha","2024-01-01","2024-03-31"),<br>
+  ("Project Beta","2024-02-15","2024-04-30"),<br>
+  ("Project Gamma","2024-03-01","2024-06-30"),<br>
+  ("Project Delta","2024-04-10","2024-07-15"),<br>
+  ("Project Epsilon","2024-05-20","2024-08-30");</code>
   <br>
   
   <code>INSERT INTO departments (departmentId, departmentName) values <br>
-  ("2",	"HR"),<br>
-  ("3",	"Sales"),<br>
-  ("4",	"Marketing"),<br>
-  ("5",	"IT");</code><br>
+  ("2","HR"),<br>
+  ("3","Sales"),<br>
+  ("4","Marketing"),<br>
+  ("5","IT");</code><br>
 
   <p>After the insert, in order to prepare the data to be better suited for the testing process, I updated some data in the following way:</p>
 
@@ -149,7 +155,7 @@ insert into all the columns-multiple rows:<br>
   SET departmentName = "Accounting" 
   WHERE departmentName = "New York";</code></li>
 
-  <li>added values to the foreign key:<br>
+  <li><p>added values to the foreign key:</p>
   <code>UPDATE `my_company`.`departments` SET `locationId` = '3' WHERE (`departmentId` = '1');</code><br>
   <code>UPDATE `my_company`.`departments` SET `locationId` = '1' WHERE (`departmentId` = '2');</code><br>
   <code>UPDATE `my_company`.`departments` SET `locationId` = '2' WHERE (`departmentId` = '3');</code><br>
