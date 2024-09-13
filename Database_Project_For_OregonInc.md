@@ -4,7 +4,7 @@
 
 <p>Application under test: Oregon Inc. company database</p>
 
-<p>Tools used: MySQL Workbench</p>
+<p>Tools used: MySQL Workbench. To see the whole codesheet please click on the following link.</p>
 
 <p>Database description: The purpose of the database I created was to get an overview of a fictional company called Oregon Inc. The company provides Telecommunication services all over the world. They have different departments working in different locations. The database will store informations about the employees, such as name, address and other personal info, their contact person in case of emergency, the departments they work for and the project they are working on. Moreover these departments will be tied to different locations.</p>
 
@@ -12,7 +12,8 @@
 <li>Database Schema </li>
 <br>
 <p>You can find below the database schema that was generated through Reverse Engineer and which contains all the tables and the relationships between them.</p>
-  
+<img width="615" alt="reverse engineer" src="https://github.com/user-attachments/assets/4550f022-c5f6-4718-9c7b-66f54086d823">
+
 <p>The tables are connected in the following way:</p>
 
 <ul>
