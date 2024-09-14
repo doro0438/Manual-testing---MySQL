@@ -12,29 +12,62 @@ Database description: The purpose of the database I created was to get an overvi
 You can find below the database schema that was generated through Reverse Engineer and which contains all the tables and the relationships between them.
 
 <img width="615" alt="reverse engineer" src="https://github.com/user-attachments/assets/4550f022-c5f6-4718-9c7b-66f54086d823">
-  
 
 ### Tables
 
-#### Employee table:
+#### Employee table: 
+employeeId: primary key, auto-increment = automatically generates a sequential integer, cannot be left empty, integer
+firstName: first name of the employee, string of up to 25 characters, cannot be left empty
+lastName: last name of employee, string of 2up to 5 characters, cannot be left empty
+emailaddress: email address, string of up to 30 characters, cannot be left empty
+dateOfBirth: date of birth, data type date, cannot be left empty
+age: age, integer, cannot be left empty
+address: address, string of up to 40 characters
+phoneNumber: phone number of the employee, integer, cannot be left empty
+salary: salary amount, decimal number up to 10 decimal digits, cannot be left empty
+
 #### Contact person table:
+contactPersonId: primary key, auto_increment = automatically generates a sequential integer, datatype: integer
+firstName; first name of contact person, datatype: string of up to 25 characterse: first name of the employee, datatype: string of 25 characters
+lastName: last name of employee, datatype: string of up to 25 characters
+phoneNumber: phone number of the contact person, datatype: integer
+employeeId: foreign key references employees tables, datatype: integer
+
 #### Departments table:
+departmentId primary key, auto_increment = automatically generates a sequential integer, datatype: integer, cannot be left empty
+departmentName: name of the department, datatype: string of up to 25 characters
+employeeId: foreign key,references employees table, datatype: integer
+locationId: foreign key, references location table, datatype: integer
+
 #### Locations table:
+locationId: primary key, auto_increment = automatically generates a sequential integer, datatype: integer, cannot be left empty
+city: name of the city, datatype: string of 25 characters
+country: name of the city, datatype: string of 25 characters
+postalCode: postal code of the city, datatype: integer
+
 #### Projects table:
-#### Primary key:
-#### Foreign key:
+projectId primary key, auto increment = automatically generates a sequential integer, datatype: integer, cannot be left empty
+projectName: name of the project, datatype: string of 25 characters, cannot be left empty
+deadlineDate: date - deadline of the project, datatype: date
+employeeId: foreign key, references employee table, datatype: integer
+
+#### Primary key
+Primary key is a field in a table that uniquely identifies each row or record in a table. A primary key column cannot have a null value, it must contain s value for every row. MySQL automatically creates a unique index for the primary key, which helps in efficiently retrieving records.
+
+#### Foreign key
+Foreign key in MySQL is a column (or a set of columns) in one table that refers to the primary key in another table. It is used to establish and enforce a link between the data in two tables, ensuring referential integrity. This means that the foreign key ensures that the values in the foreign key column match the values in the referenced table's primary key, or are NULL.
 
 ### Table Relationships
-    
-- contact_person  is connected with employees through a 1:n relationship which was implemented through contactPersonId as a primary key and employees.locationId as a foreign key
+1. 1:1 relationship
+- The employees table and the contact_person tables has a 1:1 relationship. This means that the employee can only have one contact person and the conatct person is an emergency contact only to one person.
 
-- department  is connected with employees through a 1:1 relationship which was implemented through departments.departmentId as a primary key and employees.departmentId as a foreign key
+2. n:1 relationship
 
-- departments  is connected with locationss through a n:1 relationship which was implemented through departments.departmentId as a primary key and locations.locationId as a foreign key
+- Departments table  is connected with employees through a n:1 relationship which mean that departments can have multiple emmployees.
 
-- projects  is connected with employees through a n:1 relationship which was implemented through projects.projetcId as a primary key and employees.employeeId as a foreign key
+- Departments  is connected with locationss through a n:1 relationship. this relationship shows that one location can have multiple departments but one department is only found in one location.
 
-
+- Projects  is connected with employees through a n:1 relationship which was implemented through projects.projetcId as a primary key and employees.employeeId as a foreign key. One employee can have multiple projects.
 
 ## Database Queries
 
@@ -87,6 +120,16 @@ postalCode int,
 primary key(locationId)
 );</code>
 
+<code>reate table contact_person(
+contactPersonId int not null auto_increment,
+firstName varchar(25),
+lastName varchar(25),
+phoneNumber int(10),
+primary key(contactPersonId),
+employeeId int,
+foreign key(employeeId) references employees (employeeId)
+);</code>
+
 After the database and the tables have been created, a few ALTER instructions were written in order to update the structure of the database, as described below:
 
 - changing table name: <code>ALTER TABLE project RENAME projects;</code>
@@ -97,6 +140,7 @@ After the database and the tables have been created, a few ALTER instructions we
 - adding a new table column: <code>ALTER TABLE projects ADD startDate date;</code>
 - delete a foreign key: <code>ALTER TABLE departments DROP FOREIGN KEY departments_ibfk_1;</code>
 - add autoincrement to an id: <code>ALTER TABLE supervisers MODIFY supervisorId INT NOT NULL AUTO_INCREMENT;</code>
+- delete a duplicate entry: <code>delete from contact_person where employeeId is null;</code>
 
 
 2. DML (Data Manipulation Language)
