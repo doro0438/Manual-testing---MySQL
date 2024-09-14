@@ -4,7 +4,7 @@ The scope of this project is to use all the SQL knowledge gained throught the So
 
 Application under test: Oregon Inc. company database
 
-Tool used: MySQL Workbench. To see the whole codesheet please click on the following link.
+Tool used: MySQL Workbench. To see the whole codesheet please click on the following link.(./proiectfinal.sql)
 
 Database description: The purpose of the database I created was to get an overview of a fictional company called Oregon Inc. The company provides Telecommunication services all over the world. They have different departments working in different locations. The database will store informations about the employees, such as name, address and other personal info, their contact person in case of emergency, the departments they work for and the project they are working on. Moreover these departments will be tied to different locations.
 
