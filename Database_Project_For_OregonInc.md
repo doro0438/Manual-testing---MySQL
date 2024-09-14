@@ -286,6 +286,41 @@ LIMIT - show the first 3 data entry in the departments table:
 LIMIT - show the first 7 data entry in the employees table:
 <code>SELECT * FROM employees limit 7;</code> 
 
+subquery - will only show the salaries which are below the average salary in the employee table and will show also the 
+ difference between them in a column called salaryDifference
+<code>SELECT employeeId, firstName, lastName, salary, 
+       (salary - (SELECT AVG(salary) FROM employees)) AS salaryDifference
+FROM employees
+WHERE salary < (SELECT AVG(salary) FROM employees);</code>
+
+subquery - Find employees who are working in a department located in New York
+<code>SELECT employeeId, firstName, lastName
+FROM employees
+WHERE employeeId IN (
+    SELECT employeeId 
+    FROM departments
+    WHERE locationId = (SELECT locationId FROM locations WHERE city = 'New York')
+);</code>
+
+subquery- list the projects that are associated with employees in Australia
+<code>SELECT projectId, projectName
+FROM projects
+WHERE employeeId IN (
+    SELECT employeeId
+    FROM employees
+    WHERE country = 'Australia'
+);</code>
+
+subquery - Get contact persons related to employees working the Aplha and X projects
+<code>SELECT contactPersonId, firstName, lastName, phoneNumber, relationship
+FROM contact_person
+WHERE employeeId IN (
+    SELECT employeeId 
+    FROM projects
+    WHERE projectName = 'Project Alpha' or projectName = 'Project X'
+);</code>
+
+
 ## Conclusions
 
 In conclusion I got to see and dive deeper into how our company database could be looking like and how a possible HR website would store our personal info just as in the employees table. Besides, I learned how to manage the child-parent issues and how I can edit the info in those tables, as I got multiple conflicts regarding that I cannot edit foreign keys and had to find other ways to edit them using other sytanxes I knew up until now.
