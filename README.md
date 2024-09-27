@@ -256,91 +256,121 @@ WHERE employeeId = "4";(there were multiple rows entered, but the syntax is the 
 In order to simulate various scenarios that might happen in real life I created the following queries that would cover multiple potential real-life situations:
 
 - **WHERE** - searched for the people in the employees table whose first name is "Michael"<br>
-<code>SELECT * FROM employees WHERE firstName = "Michael";</code>
+```
+SELECT * FROM employees WHERE firstName = "Michael";
+```
 
 - **AND** - select postalcode from the locations table where the country are United States and the city is New York<br>
-<code>SELECT postalCode FROM locations WHERE country = "United States" and city = "New York";</code>
+```
+SELECT postalCode FROM locations WHERE country = "United States" and city = "New York";
+```
 
 - **OR** - select employeeId, locationId for the rows where the departmane name is either HR or Marketing<br>
-<code>SELECT employeeId, locationId FROM departments WHERE departmentName = "HR" OR departmentName ="Marketing";</code>
+```
+SELECT employeeId, locationId FROM departments WHERE departmentName = "HR" OR departmentName ="Marketing";
+```
 
 - **LIKE** - checking in the departments table if there are names that contain letter "e"<br>
-<code>SELECT * FROM departments WHERE departmentName LIKE "%e%";</code>
+```
+SELECT * FROM departments WHERE departmentName LIKE "%e%";
+```
 
-- **JOINS**:
+#### Joins
 _INNER JOIN - shows employeeid, firstname, lastName and departmentName the people who have associated a departments to their name_
-<code>SELECT employees.employeeId, employees.firstName, employees.lastName, departments.departmentName
+```
+SELECT employees.employeeId, employees.firstName, employees.lastName, departments.departmentName
 FROM employees
-INNER JOIN departments ON employees.employeeId=departments.employeeId;</code>
+INNER JOIN departments ON employees.employeeId=departments.employeeId;
+```
 
 _LEFT JOIN -  shows the people from contact person table who have the same lastname as the people from the employee table_
-<code>SELECT * FROM employees LEFT JOIN contact_person ON employees.lastName=contact_person.lastName;
+```
+SELECT * FROM employees LEFT JOIN contact_person ON employees.lastName=contact_person.lastName;
+```
 
 _RIGHT JOIN - show which employee is working on which project_
-<code>SELECT employeeId, firstName, projectName
+```
+SELECT employeeId, firstName, projectName
 FROM employees
-RIGHT JOIN projects USING (employeeId);</code>
+RIGHT JOIN projects USING (employeeId);
+```
 
-#### Aggregate functions:<br>
-**AVG** - calculate average age of the employees in the employees table:
-<code>SELECT avg(age) FROM employees;</code><br>
+#### Aggregate functions<br>
+**AVG** - calculate average age of the employees in the employees table
+```
+SELECT avg(age) FROM employees;
+```
 
-**MIN** - show the lowest salary in the employees table:
-<code>SELECT min(salary) FROM employees;</code><br>
+**MIN** - show the lowest salary in the employees table
+```
+SELECT min(salary) FROM employees;
+```
 
-**ORDER BY** - order the employees by their age in acending order:
-<code>SELECT * FROM employees ORDER BY age ASC;</code><br>
 
+**ORDER BY** - order the employees by their age in acending order
+```
+SELECT * FROM employees ORDER BY age ASC;
+```
 **GROUP BY** - counting how many cities are from the same country
-<code>SELECT count(locationId) AS Number_of_cities_from_the_same_country FROM locations GROUP BY country;</code><br>
-
+```
+SELECT count(locationId) AS Number_of_cities_from_the_same_country FROM locations GROUP BY country;
+```
 **HAVING** - select the employeeId and country columns form employees table, group by country, exept the countries with only one employee
-<code>SELECT COUNT(employeeId), Country 
+```
+SELECT COUNT(employeeId), Country 
 FROM employees
 GROUP BY Country
-HAVING COUNT(employeeId) > 1;</code><br>
+HAVING COUNT(employeeId) > 1;
+```
 
-**LIMIT** - show the first 3 data entry in the departments table:
-<code>SELECT * FROM departments LIMIT 3;</code><br>
+**LIMIT** - show the first 3 data entry in the departments table
+```
+SELECT * FROM departments LIMIT 3;
+```
  
-**LIMIT** - show the first 7 data entry in the employees table:
-<code>SELECT * FROM employees limit 7;</code><br> 
+**LIMIT** - show the first 7 data entry in the employees table
+```
+SELECT * FROM employees limit 7;
+```
 
 #### Subqueries
-**subquery** - will only show the salaries which are below the average salary in the employee table and will show also the 
- difference between them in a column called salaryDifference
-<code>SELECT employeeId, firstName, lastName, salary, 
+**subquery** - will only show the salaries which are below the average salary in the employee table and will show also the difference between them in a column called salaryDifference
+```
+SELECT employeeId, firstName, lastName, salary, 
        (salary - (SELECT AVG(salary) FROM employees)) AS salaryDifference
 FROM employees
-WHERE salary < (SELECT AVG(salary) FROM employees);</code><br>
+WHERE salary < (SELECT AVG(salary) FROM employees);
+```
 
 **subquery** - Find employees who are working in a department located in New York
-<code>SELECT employeeId, firstName, lastName
+```
+SELECT employeeId, firstName, lastName
 FROM employees
 WHERE employeeId IN (
     SELECT employeeId 
     FROM departments
-    WHERE locationId = (SELECT locationId FROM locations WHERE city = 'New York')
-);</code><br>
+    WHERE locationId = (SELECT locationId FROM locations WHERE city = 'New York'));
+```
 
 **subquery**- list the projects that are associated with employees in Australia
-<code>SELECT projectId, projectName
+```
+SELECT projectId, projectName
 FROM projects
 WHERE employeeId IN (
     SELECT employeeId
     FROM employees
-    WHERE country = 'Australia'
-);</code><br>
+    WHERE country = 'Australia');
+```
 
 **subquery** - Get contact persons related to employees working the Aplha and X projects
-<code>SELECT contactPersonId, firstName, lastName, phoneNumber, relationship
+```
+SELECT contactPersonId, firstName, lastName, phoneNumber, relationship
 FROM contact_person
 WHERE employeeId IN (
     SELECT employeeId 
     FROM projects
-    WHERE projectName = 'Project Alpha' or projectName = 'Project X'
-);</code><br>
-
+    WHERE projectName = 'Project Alpha' or projectName = 'Project X');
+```
 
 ## Conclusions
 
