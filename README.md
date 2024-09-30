@@ -374,5 +374,7 @@ WHERE employeeId IN (
 
 ## Conclusions
 
-In conclusion I got to see and dive deeper into how our company database could be looking like and how a possible HR website would store our personal info just as in the employees table. Besides, I learned how to manage the child-parent issues and how I can edit the info in those tables, as I got multiple conflicts regarding that I cannot edit foreign keys and had to find other ways to edit them using other sytanxes I knew up until now.
+In completing this SQL project, I was able to transform my theoretical knowledge of database management into practical skills. I learned how to create efficient database structures, query data across multiple tables, and solve real-world problems. The hands-on experience of working with relational databases, as demonstrated in the project, has deepened my understanding of how critical SQL is to data management and backend development.
+
+Going forward, I am excited to continue building on this foundation. With the rise of big data and data-driven decision-making, mastering SQL opens the door to exploring more advanced data systems and tools. This project marks the beginning of my journey into database management, and I look forward to using these skills in larger, more complex systems.
 
