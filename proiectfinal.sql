@@ -1,5 +1,6 @@
 -- creating the database
 create database my_company;
+
 -- create table employees
 create table employees (
 employeeId int not null auto_increment,
@@ -15,6 +16,7 @@ bonusfor2023  float(10, 2),
 bonusfor2022 float(10, 2),
 primary key(employeeId)
 );
+
  -- create project table
  create table project(
 projectId int not null auto_increment,
@@ -23,6 +25,7 @@ deadlineDate date,
 primary key (projectId),
 employeeId int,
 foreign key (employeeId) references employees (employeeId));
+
 -- create departments table
  create table departments(
 departmentId int not null auto_increment,
@@ -30,6 +33,7 @@ departmentName varchar(25),
 primary key(departmentId),
 employeeId int,
 foreign key (employeeId) references employees (employeeId));
+
 -- create table locations
 create table locations(
 locationId int not null auto_increment,
