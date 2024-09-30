@@ -81,7 +81,7 @@ First the database was created using the following query:
 create database my_company;
 ```
 
-Next step will be to create the tables for the database, namely: employees, project, departments, locations:
+Next step will be to create the tables for the database, namely: employees, project, departments, locations and contac_person:
 
 ```
 create table employees( 
