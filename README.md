@@ -374,7 +374,7 @@ WHERE employeeId IN (
 
 ## Conclusions
 
-In completing this SQL project, I was able to transform my theoretical knowledge of database management into practical skills. I learned how to create efficient database structures, query data across multiple tables, and solve real-world problems. The hands-on experience of working with relational databases, as demonstrated in the project, has deepened my understanding of how critical SQL is to data management and backend development.
+In completing this SQL project, I was able to transform my theoretical knowledge of database management into practical skills. I learned how to create efficient database structures, query data across multiple tables, and solve problems that could arise in the real-world. The hands-on experience of working with relational databases, as demonstrated in the project, has deepened my understanding of how critical SQL is to data management and backend development.
 
 Going forward, I am excited to continue building on this foundation. With the rise of big data and data-driven decision-making, mastering SQL opens the door to exploring more advanced data systems and tools. This project marks the beginning of my journey into database management, and I look forward to using these skills in larger, more complex systems.
 
