@@ -315,7 +315,7 @@ SELECT * FROM employees ORDER BY age ASC;
 ```
 SELECT count(locationId) AS Number_of_cities_from_the_same_country FROM locations GROUP BY country;
 ```
-**HAVING** - select the employeeId and country columns form employees table, group by country, exept the countries with only one employee
+**HAVING** - select the employeeId and country columns form employees table, group by country, except the countries with only one employee
 ```
 SELECT COUNT(employeeId), Country 
 FROM employees
