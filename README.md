@@ -63,7 +63,7 @@ Foreign key in MySQL is a column (or a set of columns) in one table that refers 
 
 2. n:1 relationship
 
-- _Departments_ table  is connected with _employees_ table through a _n:1_ relationship which mean that departments can have multiple emmployees.
+- _Departments_ table  is connected with _employees_ table through a _n:1_ relationship which mean that departments can have multiple employees.
 
 - _Departments_ table is connected with _locations_ table through a _n:1_ relationship. This relationship shows that one location can have multiple departments but one department is only found in one location.
 
