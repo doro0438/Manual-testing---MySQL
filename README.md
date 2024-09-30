@@ -374,7 +374,9 @@ WHERE employeeId IN (
 
 ## Conclusions
 
-In completing this SQL project, I was able to transform my theoretical knowledge of database management into practical skills. I learned how to create efficient database structures, query data across multiple tables, and solve problems that could arise in the real-world. The hands-on experience of working with relational databases, as demonstrated in the project, has deepened my understanding of how critical SQL is to data management and backend development.
+In completing this SQL project, I was able to transform my theoretical knowledge of database management into practical skills. I learned how to create efficient database structures, query data across multiple tables, and solve problems that could arise in the real-world. A crucial part of this project was testing—both during the query-building phase and after implementing the database. By using manual testing techniques, I validated the accuracy of the data, ensured proper relationships between tables, and identified areas where optimization was necessary.
 
-Going forward, I am excited to continue building on this foundation. With the rise of big data and data-driven decision-making, mastering SQL opens the door to exploring more advanced data systems and tools. This project marks the beginning of my journey into database management, and I look forward to using these skills in larger, more complex systems.
+Testing played a key role in maintaining data integrity and consistency. By manually verifying each query's output, I was able to catch logical errors early, such as missing joins or incorrect aggregate functions. This hands-on testing experience has reinforced the importance of a thorough, detail-oriented approach to database development, and helped me realize how crucial testing is to the overall software development process.
+
+Going forward, I am excited to continue building on this foundation. With the rise of big data and data-driven decision-making, mastering SQL and incorporating rigorous testing opens the door to exploring more advanced data systems and tools. This project marks the beginning of my journey into database management, and I look forward to using these skills in larger, more complex systems, ensuring both functionality and reliability through robust testing practices.
 
