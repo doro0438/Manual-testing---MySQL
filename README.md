@@ -362,7 +362,7 @@ WHERE employeeId IN (
     WHERE country = 'Australia');
 ```
 
-**subquery** - Get contact persons related to employees working the Aplha and X projects
+**subquery** - Get contact persons related to employees working the Alpha and X projects
 ```
 SELECT contactPersonId, firstName, lastName, phoneNumber, relationship
 FROM contact_person
