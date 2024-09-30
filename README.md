@@ -149,7 +149,7 @@ After the database and the tables have been created, a few ALTER instructions we
 - add autoincrement to an id: <code>ALTER TABLE supervisers MODIFY supervisorId INT NOT NULL AUTO_INCREMENT;</code>
 - delete a duplicate entry: <code>delete from contact_person where employeeId is null;</code>
 - delete unnecessary columns: <code>ALTER TABLE projects CROP column deadlineDate;</code>
-- delete the info in the supervisers table: <code>DELETE FROM supervisers;</code>  - this table was not used in the end that is why I did not put it in the beginning, hence it is not part of the database anymore
+- delete the info in the supervisers table: <code>DELETE FROM supervisers;</code>  
 - deleted some entries as I inserted the data twice: <code>delete from employees where employeeId="11";</code>
 - delete FK as the connection did not work: <code>ALTER TABLE departments DROP FOREIGN KEY departments_ibfk_1;</code>
 
